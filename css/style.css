@@ -1,0 +1,50 @@
+.meal-title,
+.meal-title-cat {
+    background-color: rgba(255, 255, 255, .8);
+    transform: translateY(102%);
+    transition: .5s;
+}
+
+.item,
+.item-cat,
+.item-area,
+.item-ing {
+    cursor: pointer;
+}
+
+.item:hover .meal-title,
+.item-cat:hover .meal-title-cat {
+    transform: translateY(0);
+}
+
+#loading-screen {
+    display: flex;
+}
+
+.main-side {
+    width: 200px;
+    display: flex;
+}
+
+.closer-side {
+    width: 80px;
+}
+
+#instructions-sec {
+    z-index: 100;
+}
+
+.main-side li,
+.button-close,
+#sidebar i {
+    cursor: pointer;
+}
+
+#sidebar {
+    z-index: 2000;
+}
+
+.item-area i,
+.item-ing i {
+    font-size: 60px;
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="icon" type="image/x-icon" href="/images/logo.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Yummy</title>
+</head>
+
+<body class="bg-black overflow-hidden  ">
+
+    <div id="loading-screen" class=" position-fixed top-0 start-0 end-0 bottom-0 bg-black justify-content-center align-items-center z-2">
+        <i class="fa fa-spinner fa-spin fa-5x"></i>
+    </div>
+
+
+
+    <section>
+        <div class="container py-3">
+            <div class="row main-items g-2 m-auto ">
+            </div>
+        </div>
+    </section>
+
+
+    <section id="instructions-sec" class="d-none text-white py-3 position-fixed top-0 end-0 start-0 bottom-0 bg-black overflow-y-scroll ">
+        <div class="container">
+            <div class="row" id="instructions">
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="sidebar" class="position-fixed top-0 bottom-0 start-0   ">
+        <div class="container h-100 d-flex">
+            <div class="main-side  flex-column justify-content-between h-100 bg-black position-relative">
+                <div class="links text-white py-5 ">
+                    <ul class="list-unstyled p-2">
+                        <li class="mb-3 text-capitalize fs-5 position-relative pointer-event ">search </li>
+                        <li class="mb-3 text-capitalize fs-5 position-relative pointer-event ">categories </li>
+                        <li class="mb-3 text-capitalize fs-5 position-relative pointer-event ">area </li>
+                        <li class="mb-3 text-capitalize fs-5 position-relative pointer-event">ingredients </li>
+                        <li class="mb-3 text-capitalize fs-5 position-relative pointer-event">contactUs </li>
+                    </ul>
+                </div>
+                <div class="contact text-white p-2">
+                    <i class="fa-brands fa-facebook-f me-2"></i>
+                    <i class="fa-brands fa-google me-2"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <p>Copyright Â© 2019 All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+            <div class="closer-side bg-white h-100 p-2 text-center d-flex flex-column justify-content-between">
+                <div class="logo">
+                    <img src="imgs/logo.png" class="w-100" alt="">
+                </div>
+                <div class="button-close">
+                    <i class="fa-solid fa-bars fs-1 open-side "></i>
+                    <i class="fa-solid fa-xmark fs-1 close-side d-none "></i>
+                </div>
+                <div class="share">
+                    <i class="fa-brands fa-google d-block"></i>
+                    <i class="fa-solid fa-share-nodes"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="search" class=" d-none bg-black m-auto position-fixed top-0 start-0 bottom-0 end-0 overflow-y-scroll ">
+        <div class="container">
+            <div class="row g-3 mb-5 mt-3 ">
+                <div class="col-md-6 ">
+                    <div class="inputs ">
+                        <input type="text" class="form-control bg-transparent text-black bg-body-secondary" oninput="serchByName(this.value)" placeholder="Search By Name...">
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="inputs ">
+                        <input type="text" class="form-control bg-transparent text-black bg-body-secondary" maxlength="1" oninput="getSearchByFirst(this.value)" placeholder="Search By First Letter...">
+                    </div>
+                </div>
+            </div>
+            <div class="row search-items g-3"></div>
+        </div>
+    </section>
+
+    <section id="categories" class=" d-none bg-black m-auto position-fixed top-0 start-0 bottom-0 end-0 overflow-y-scroll">
+        <div class="container py-3">
+            <div class="row category-items g-3 m-auto ">
+            </div>
+        </div>
+    </section>
+
+    <section id="area" class="d-none bg-black m-auto position-fixed top-0 start-0 bottom-0 end-0 overflow-y-scroll">
+        <div class="container py-3">
+            <div class="row area-items g-3 text-center text-white ">
+            </div>
+        </div>
+    </section>
+
+    <section id="ingredients" class="d-none bg-black m-auto position-fixed top-0 start-0 bottom-0 end-0 overflow-y-scroll">
+        <div class="container py-3">
+            <div class="row ingred-items g-3 text-center text-white ">
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contactUs" class="d-none bg-black m-auto position-fixed top-0 start-0 bottom-0 end-0 overflow-y-scroll">
+        <div class="container h-100 d-flex ">
+            <div class="row w-50  g-3 text-center m-auto  ">
+                <div class="col-md-6">
+                    <div class="input-sec">
+                        <input id="name" type="text" placeholder="Enter Your Name..." class="form-control" onkeyup="validation()">
+                        <div id="nameAlert" class="alert alert-danger w-100 mt-2 d-none">
+                            Special characters and numbers not allowed
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-sec">
+                        <input id="email" type="email" placeholder="Enter Your Email..." class="form-control" onkeyup="validation()">
+                        <div id="emailAlert" class="alert alert-danger w-100 mt-2 d-none">
+                            Email not valid *exemple@yyy.zzz
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-sec">
+                        <input id="phone" type="text" placeholder="Enter Your Phone..." class="form-control" onkeyup="validation()">
+                        <div id="phoneAlert" class="alert alert-danger w-100 mt-2 d-none">
+                            Enter valid Phone Number
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-sec">
+                        <input id="age" type="number" placeholder="Enter Your Age..." class="form-control" onkeyup="validation()">
+                        <div id="ageAlert" class="alert alert-danger w-100 mt-2 d-none">
+                            Enter valid age
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-sec">
+                        <input id="pass" type="password" placeholder="Enter Your Password..." class="form-control" onkeyup="validation()">
+                        <div id="passAlert" class="alert alert-danger w-100 mt-2 d-none">
+                            Enter valid password *Minimum eight characters, at least one letter and one number:*
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-sec">
+                        <input id="repass" type="password" placeholder="Repassword..." class="form-control" onkeyup="validation()">
+                        <div id="repassAlert" class="alert alert-danger w-100 mt-2 d-none">
+                            Enter valid repassword
+                        </div>
+                    </div>
+                </div>
+                <button id="form-btn" class="btn disabled text-danger border border-1 border-danger w-50 m-auto mt-3 ">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/fb27b24f16.js" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
